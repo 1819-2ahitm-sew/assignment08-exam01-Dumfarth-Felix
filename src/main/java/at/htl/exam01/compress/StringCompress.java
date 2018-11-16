@@ -46,12 +46,25 @@ public class StringCompress {
         String line;
         char letter;
         int counter = 0;
-        int number = 0;
+        String number = "";
+        int numberi = 0;
         try(Scanner scanner = new Scanner(new FileReader(fileName))) {
             while (scanner.hasNextLine()){
                 line = scanner.nextLine();
                 letter = line.charAt(0);
-                text[counter] = line;
+                if (counter >= 2){
+                    number =  String.valueOf(line.charAt(1)) + String.valueOf(line.charAt(2));
+                }else {
+                    number =  String.valueOf(line.charAt(1));
+                }
+                numberi = Integer.valueOf(number);
+                for (int i = 0; i <= numberi; i++) {
+                    if (i == 1){
+                    text[counter] =  String.valueOf(letter);
+                    }else {
+                        text[counter] = text[counter] + String.valueOf(letter);
+                    }
+                }
                 counter++;
             }
 
@@ -59,7 +72,7 @@ public class StringCompress {
             e.printStackTrace();
         }
 
-        return null;
+        return text;
     }
 
 
@@ -70,7 +83,7 @@ public class StringCompress {
      * @param lines String-Array
      */
     public void print(String[] lines) {
-        for (int i = 0; i < getNoOfLines(FILE_NAME) -1; i++) {
+        for (int i = 0; i < getNoOfLines(FILE_NAME); i++) {
             System.out.println(lines[i]);
         }
     }

@@ -22,9 +22,22 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        Document[] doc = new Document[2];
-        doc[0] = new Book("Rowlings", "Harry Potter und der Stein der Weisen""Harry Potter und der Stein der Weisen");
-        doc[1] = new Email("")
+        int books = 0;
+        int emails = 0;
+        Document[] doc = new Document[3];
+        doc[0] = new Book("Harry Potter und der Stein der Weisen","Rowlings");
+        doc[1] = new Email("Bewerbung", "Susi", "CoolCompany");
+        doc[2] = new Book( "lordOfTheRings", "Tolkien");
+        System.out.println();
+        for (int i = 0; i < doc.length; i++) {
+            if (doc[i] instanceof Book){
+                books++;
+            }  else if (doc[i] instanceof Email){
+                emails++;
+            }
+        }
+        System.out.println("Anzahl Books:  "+books);
+        System.out.println("Anzahl Emails: "+emails);
     }
 
 
