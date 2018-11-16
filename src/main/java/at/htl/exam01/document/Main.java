@@ -22,8 +22,9 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-
-
+        Document[] doc = new Document[2];
+        doc[0] = new Book("Rowlings", "Harry Potter und der Stein der Weisen""Harry Potter und der Stein der Weisen");
+        doc[1] = new Email("")
     }
 
 

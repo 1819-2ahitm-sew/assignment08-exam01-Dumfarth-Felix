@@ -2,6 +2,7 @@ package at.htl.exam01.compress;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class StringCompress {
@@ -41,7 +42,22 @@ public class StringCompress {
      * @return String-Array mit dem entpacktem Text
      */
     public String[] readFromFile(String fileName) {
+        String[] text = new String[getNoOfLines(FILE_NAME)];
+        String line;
+        char letter;
+        int counter = 0;
+        int number = 0;
+        try(Scanner scanner = new Scanner(new FileReader(fileName))) {
+            while (scanner.hasNextLine()){
+                line = scanner.nextLine();
+                letter = line.charAt(0);
+                text[counter] = line;
+                counter++;
+            }
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
@@ -54,7 +70,9 @@ public class StringCompress {
      * @param lines String-Array
      */
     public void print(String[] lines) {
-
+        for (int i = 0; i < getNoOfLines(FILE_NAME) -1; i++) {
+            System.out.println(lines[i]);
+        }
     }
 
     /**
@@ -64,8 +82,17 @@ public class StringCompress {
      * @return Anzahl der Zeilen in der Textdatei
      */
     public int getNoOfLines(String fileName) {
+        int count = 0;
+        try(Scanner scanner = new Scanner(new FileReader(fileName))) {
+            while (scanner.hasNextLine()){
+                count++;
+                scanner.nextLine();
+            }
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        return -1;
+        return count;
     }
 }
