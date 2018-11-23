@@ -8,6 +8,11 @@ abstract class Document {
         this.title = title;
         this.from = from;
     }
-    public Document(){
+
+    public Document() {
+    }
+
+    public String toSting() {
+        return "'" + title + "' von '" + from + "'";
     }
 }
